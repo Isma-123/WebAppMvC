@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ReadCSV": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
