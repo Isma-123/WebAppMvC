@@ -1,0 +1,49 @@
+﻿@model WebApp.Models.ViewModels.EditUserViewModel
+
+@{
+    ViewBag.Title = "Editar Usuario";
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+}
+
+<h2 class="mb-4">Editar Usuario</h2>
+
+@* Mensajes de éxito o error *@
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+@using (Html.BeginForm("Edit", "User", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m._Id) @* Para mantener el ID del usuario *@
+
+    <div class="mb-3">
+        @Html.LabelFor(m => m._Nombre, "Nombre", new { @class = "form-label" })
+        @Html.TextBoxFor(m => m._Nombre, new { @class = "form-control", placeholder = "Ingrese nombre" })
+        @Html.ValidationMessageFor(m => m._Nombre, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(m => m._Email, "Email", new { @class = "form-label" })
+        @Html.TextBoxFor(m => m._Email, new { @class = "form-control", placeholder = "Ingrese email" })
+        @Html.ValidationMessageFor(m => m._Email, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(m => m._Edad, "Edad", new { @class = "form-label" })
+        @Html.TextBoxFor(m => m._Edad, new { @class = "form-control", placeholder = "Ingrese edad" })
+        @Html.ValidationMessageFor(m => m._Edad, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary"><i class="bi bi-pencil-square me-2"></i> Actualizar</button>
+    <a href="@Url.Action("Query", "User")" class="btn btn-secondary ms-2">Cancelar</a>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
