@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+}
+
+<div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+    <div class="card shadow-lg p-4" style="width: 360px; border-radius: 20px;">
+        <div class="text-center mb-4">
+            <i class="bi bi-person-circle fs-1 text-success"></i>
+            <h3 class="mt-2 text-success fw-bold">Welcome Back</h3>
+            <p class="text-muted small">Please enter your credentials to continue</p>
+        </div>
+
+        <form id="frmAccess">
+            <div class="mb-3">
+                <label for="_usuario" class="form-label fw-semibold">User</label>
+                <input type="text" id="_usuario" name="user" class="form-control" placeholder="Enter your email" required />
+            </div>
+
+            <div class="mb-4">
+                <label for="_password" class="form-label fw-semibold">Password</label>
+                <input type="password" id="_password" name="password" class="form-control" placeholder="Enter your password" required />
+            </div>
+
+            <div id="alertBox" class="alert alert-danger d-none small text-center py-2"></div>
+
+            <div class="d-grid">
+                <button type="submit" class="btn btn-success btn-lg fw-semibold">Sign In</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#frmAccess").submit(function (e) {
+                e.preventDefault();
+
+                var url = '@Url.Action("Enter", "Access")';
+                var form = $(this).serialize();
+
+                $.post(url, form, function (data) {
+                    if (data == "1") {
+                        window.location.href = '@Url.Content("~/")';
+                    } else {
+                        $("#alertBox").removeClass("d-none").text(data);
+                    }
+                }).fail(function () {
+                    $("#alertBox").removeClass("d-none").text("An unexpected error occurred. Please try again.");
+                });
+            });
+        });
+    </script>
+}

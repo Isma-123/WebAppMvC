@@ -1,0 +1,59 @@
+﻿@model List<WebApp.Models.ViewModels.QueryViewModels>
+
+@{
+    ViewBag.Title = "Consulta de Usuarios";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="mb-0">Consulta de Usuarios</h2>
+    <a href="@Url.Action("Create", "User")" class="btn btn-success">
+        <i class="bi bi-plus-circle me-2"></i> Agregar Nuevo Usuario
+    </a>
+</div>
+
+<div class="table-responsive shadow-sm">
+    <table class="table table-striped table-bordered table-hover align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Email</th>
+                <th scope="col">Edad</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item._Id</td>
+                        <td>@item._Email</td>
+                        <td>@(item._Edad.HasValue ? item._Edad.ToString() : "-")</td>
+                        <td>
+                            <a href="@Url.Action("Edit", "User", new { id = item._Id })" class="btn btn-sm btn-warning">
+                                <i class="bi bi-pencil-fill"></i> Editar
+                            </a>
+                            <a href="@Url.Action("Delete", "User", new { id = item._Id })" class="btn btn-sm btn-danger">
+                                <i class="bi bi-trash-fill"></i> Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="3" class="text-center text-muted">No hay usuarios registrados</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // para agg funcionalidad futura filtros de tabla etc 
+        });
+    </script>
+}

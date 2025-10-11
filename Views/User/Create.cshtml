@@ -1,0 +1,54 @@
+﻿@model WebApp.Models.ViewModels.AddUserViewModel
+
+@{
+    ViewBag.Title = "Nuevo Registro";
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+}
+
+<h2 class="mb-4">Crear Nuevo Usuario</h2>
+
+@*  *@
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+@using (Html.BeginForm("Create", "User", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="mb-3">
+        @Html.LabelFor(m => m._Nombre, "Nombre", new { @class = "form-label" })
+        @Html.TextBoxFor(m => m._Nombre, new { @class = "form-control", placeholder = "Ingrese nombre" })
+        @Html.ValidationMessageFor(m => m._Nombre, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(m => m._Email, "Email", new { @class = "form-label" })
+        @Html.TextBoxFor(m => m._Email, new { @class = "form-control", placeholder = "Ingrese email" })
+        @Html.ValidationMessageFor(m => m._Email, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(m => m._Edad, "Edad", new { @class = "form-label" })
+        @Html.TextBoxFor(m => m._Edad, new { @class = "form-control", placeholder = "Ingrese edad" })
+        @Html.ValidationMessageFor(m => m._Edad, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(m => m._Clave, "Contraseña", new { @class = "form-label" })
+        @Html.PasswordFor(m => m._Clave, new { @class = "form-control", placeholder = "Ingrese contraseña" })
+        @Html.ValidationMessageFor(m => m._Clave, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a href="@Url.Action("Query", "User")" class="btn btn-secondary">Cancelar</a>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

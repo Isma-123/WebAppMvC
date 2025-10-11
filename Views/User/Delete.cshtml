@@ -1,0 +1,44 @@
+﻿@model WebApp.Models.ViewModels.EditUserViewModel
+
+@{
+    ViewBag.Title = "Eliminar Usuario";
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+}
+
+<h2 class="mb-4 text-danger"><i class="bi bi-trash-fill me-2"></i>Eliminar Usuario</h2>
+
+<div class="alert alert-warning">
+    <strong>Atención:</strong> Esta acción eliminará permanentemente al usuario seleccionado.
+</div>
+
+<div class="card mb-4 shadow-sm">
+    <div class="card-body">
+        <p><strong>ID:</strong> @Model._Id</p>
+        <p><strong>Nombre:</strong> @Model._Nombre</p>
+        <p><strong>Email:</strong> @Model._Email</p>
+        <p><strong>Edad:</strong> @(Model._Edad.HasValue ? Model._Edad.ToString() : "-")</p>
+    </div>
+</div>
+
+@using (Html.BeginForm("Delete", "User", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m._Id)
+
+    <button type="submit" class="btn btn-danger">
+        <i class="bi bi-check2-circle me-2"></i>Confirmar Eliminación
+    </button>
+    <a href="@Url.Action("Query", "User")" class="btn btn-secondary ms-2">
+        <i class="bi bi-x-circle me-2"></i>Cancelar
+    </a>
+}
+
+@section Scripts {
+    <script>
+        // Opcional: agregar confirmación extra antes de enviar
+        $("form").submit(function () {
+            return confirm("¿Estás seguro de eliminar este usuario?");
+        });
+    </script>
+}
+
