@@ -79,3 +79,5 @@ C:\Users\aproc\source\repos\WebApp\WebApp\obj\Debug\WebApp.csproj.CoreCompileInp
 C:\Users\aproc\source\repos\WebApp\WebApp\obj\Debug\WebApp.csproj.Up2Date
 C:\Users\aproc\source\repos\WebApp\WebApp\obj\Debug\WebApp.dll
 C:\Users\aproc\source\repos\WebApp\WebApp\obj\Debug\WebApp.pdb
+C:\Users\aproc\source\repos\WebApp\WebApp\bin\EntityFramework.SqlServer.dll
+C:\Users\aproc\source\repos\WebApp\WebApp\bin\EntityFramework.SqlServer.xml

@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="8fb175b3666647baaded9ae3ed133b68" Name="Diagram1">
-        <EntityTypeShape EntityType="DBMVCModel.mSTATU" Width="1.5" PointX="3.875" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBMVCModel.mSTATU" Width="1.5" PointX="3.25" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DBMVCModel.USER" Width="1.5" PointX="0.5" PointY="3.375" IsExpanded="true" />
         <AssociationConnector Association="DBMVCModel.FK_USERS_mSTATUS" ManuallyRouted="false" />
       </Diagram>

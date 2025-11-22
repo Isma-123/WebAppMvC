@@ -1,9 +1,177 @@
 ﻿@{
-    ViewBag.Title = "About";
+    ViewBag.Title = "Sobre Nosotros";
 }
-<main aria-labelledby="title">
-    <h2 id="title">@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
 
-    <p>Use this area to provide additional information.</p>
-</main>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #f4f4f4, #e8e8e8);
+        margin: 0;
+        padding: 0;
+    }
+
+    .hero-section {
+        background: url('https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+        height: 380px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        padding: 0 20px;
+        position: relative;
+    }
+
+        .hero-section:before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+        }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+    }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            line-height: 1.5;
+        }
+
+    .content-section {
+        max-width: 1100px;
+        margin: 60px auto;
+        padding: 0 25px;
+    }
+
+    .card {
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        margin-bottom: 30px;
+        transition: .3s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+
+    .section-title {
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+
+    .section-text {
+        font-size: 1.1rem;
+        color: #555;
+        line-height: 1.7;
+    }
+
+    .highlight {
+        color: #2b7a78;
+        font-weight: bold;
+    }
+
+    .values-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 20px;
+        margin-top: 25px;
+    }
+
+    .value-box {
+        background: #f9f9f9;
+        border-left: 5px solid #2b7a78;
+        border-radius: 10px;
+        padding: 20px;
+        transition: .3s ease;
+    }
+
+        .value-box:hover {
+            background: #eefaf8;
+        }
+
+    .value-title {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        color: #2b7a78;
+        font-weight: bold;
+    }
+
+    .footer-space {
+        height: 40px;
+    }
+</style>
+
+<!-- HERO SECTION -->
+<div class="hero-section">
+    <div class="hero-content">
+        <h1>Consultoría Especializada en Mueblería</h1>
+        <p>Transformamos espacios con soluciones inteligentes, modernas y funcionales.</p>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="content-section">
+
+    <div class="card">
+        <h2 class="section-title">Quiénes Somos</h2>
+        <p class="section-text">
+            Somos una consultoría dedicada al diseño, fabricación y optimización de muebles
+            para hogares, oficinas y espacios comerciales. Combinamos innovación,
+            estética y funcionalidad para crear ambientes únicos que reflejan la identidad
+            de cada cliente.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2 class="section-title">Nuestra Misión</h2>
+        <p class="section-text">
+            Brindar soluciones de mueblería personalizadas, funcionales y duraderas, con un enfoque
+            en la modernidad, la eficiencia del espacio y la calidad artesanal.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2 class="section-title">Nuestros Valores</h2>
+        <div class="values-grid">
+
+            <div class="value-box">
+                <div class="value-title">✔ Innovación</div>
+                Diseños modernos y soluciones actualizadas para cualquier tipo de ambiente.
+            </div>
+
+            <div class="value-box">
+                <div class="value-title">✔ Calidad</div>
+                Materiales resistentes, acabados premium y construcción duradera.
+            </div>
+
+            <div class="value-box">
+                <div class="value-title">✔ Compromiso</div>
+                Acompañamos al cliente desde la idea inicial hasta la entrega final.
+            </div>
+
+            <div class="value-box">
+                <div class="value-title">✔ Personalización</div>
+                Cada diseño es único, adaptado a las necesidades y gustos del cliente.
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="footer-space"></div>

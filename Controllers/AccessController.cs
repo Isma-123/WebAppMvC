@@ -21,11 +21,9 @@ namespace WebApp.Controllers
             {
                 using (DBMVCEntities db = new DBMVCEntities())
                 {
-                    var _read = (from a in db.USERS
-                                 where a.Email == user 
-                                 && a.Password == password
-                                 && a.idEstatus == 1
-                                 select a);
+                    var _read = db.USERS.Where(d => d.Email == user && d.Password
+                    == password);
+
 
                     if (_read.Count() > 0)
                     {

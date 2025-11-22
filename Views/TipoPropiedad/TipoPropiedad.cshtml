@@ -1,0 +1,96 @@
+﻿@model List<WebApp.Models.ViewModels.TipoPropiedad>
+
+@{
+    ViewBag.Title = "Tipo de Propiedades";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-primary">
+            <i class="fa-solid fa-building"></i> Tipos de Propiedad
+        </h2>
+
+        <a href="@Url.Action("Crear", "TipoPropiedad")" class="btn btn-success shadow">
+            <i class="fa-solid fa-plus"></i> Agregar Nuevo
+        </a>
+    </div>
+
+    <div class="card shadow-lg border-0 rounded-3">
+        <div class="card-header bg-primary text-white fw-bold">
+            <i class="fa-solid fa-list"></i> Listado
+        </div>
+
+        <div class="card-body">
+
+            @if (Model == null || !Model.Any())
+            {
+                <div class="alert alert-warning text-center">
+                    <i class="fa-solid fa-circle-info"></i> No hay registros para mostrar.
+                </div>
+            }
+            else
+            {
+                <table class="table table-hover table-striped align-middle">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>ID</th>
+                            <th>Descripción</th>
+                            <th>Activo</th>
+                            <th>Fecha Registro</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.IdTipoPropiedad</td>
+                                <td>@item.Descripcion</td>
+
+                                <td>
+                                    @if (item.Activo)
+                                    {
+                                        <span class="badge bg-success">
+                                            <i class="fa-solid fa-check"></i> Sí
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">
+                                            <i class="fa-solid fa-xmark"></i> No
+                                        </span>
+                                    }
+                                </td>
+
+                                <td>
+                                    @item.FechaRegistro.ToString("dd/MM/yyyy hh:mm tt")
+                                </td>
+
+                                <td class="text-center">
+
+                                    <a href="@Url.Action("Editar", "TipoPropiedad", new { id = item.IdTipoPropiedad })"
+                                       class="btn btn-sm btn-primary me-2">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+
+                                    <a href="@Url.Action("Eliminar", "TipoPropiedad", new { id = item.IdTipoPropiedad })"
+                                       class="btn btn-sm btn-danger"
+                                       onclick="return confirm('¿Seguro que deseas eliminar este registro?');">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+</div>
